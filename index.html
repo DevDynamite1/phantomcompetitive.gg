@@ -1,0 +1,433 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PHANTOM COMPETITIVE</title>
+<meta name="description" content="Phantom Competitive — BuildNow GG competitive tournaments, rankings and community updates.">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --red: #d52b38;
+  --bg: #09090b;
+  --panel: #111114;
+  --white: #f5f5f5;
+  --muted: #85858e;
+  --border: #242429;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: Inter, sans-serif;
+}
+
+a { text-decoration: none; color: inherit; }
+
+nav {
+  height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8%;
+  border-bottom: 1px solid var(--border);
+  background: #0b0b0d;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.brand {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 27px;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.brand span { color: var(--red); }
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #aaa;
+  text-transform: uppercase;
+}
+
+.nav-links a:hover { color: white; }
+
+.join {
+  background: var(--red);
+  padding: 12px 19px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .6px;
+  border-radius: 3px;
+  transition: .2s;
+}
+
+.join:hover { background: #f03a48; }
+
+.hero {
+  min-height: 590px;
+  display: flex;
+  align-items: center;
+  padding: 80px 10%;
+  background:
+    linear-gradient(90deg, #09090b 5%, rgba(9,9,11,.93) 45%, rgba(9,9,11,.35)),
+    radial-gradient(ellipse at 80% 50%, #64151d 0%, #1c0c10 35%, #09090b 75%);
+  border-bottom: 1px solid var(--border);
+}
+
+.hero-content { max-width: 680px; }
+
+.eyebrow {
+  color: var(--red);
+  font-size: 11px;
+  letter-spacing: 3px;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(65px, 10vw, 112px);
+  line-height: .88;
+  font-weight: 900;
+  letter-spacing: -2px;
+}
+
+h1 span { color: var(--red); }
+
+.hero p {
+  color: #aaa;
+  font-size: 14px;
+  line-height: 1.9;
+  margin: 27px 0 32px;
+  max-width: 460px;
+}
+
+.hero-buttons { display: flex; gap: 12px; flex-wrap: wrap; }
+
+.button {
+  display: inline-block;
+  padding: 15px 24px;
+  border: 1px solid #444;
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .8px;
+  transition: .2s;
+}
+
+.button.primary {
+  background: var(--red);
+  border-color: var(--red);
+}
+
+.button:hover { transform: translateY(-2px); }
+
+section { padding: 85px 10%; }
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin-bottom: 32px;
+  gap: 15px;
+}
+
+.section-label {
+  color: var(--red);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin-bottom: 9px;
+}
+
+h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 42px;
+  text-transform: uppercase;
+}
+
+.section-description {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 8px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 17px;
+}
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  padding: 25px;
+  min-height: 175px;
+  border-radius: 4px;
+  transition: .2s;
+}
+
+.card:hover {
+  border-color: #793039;
+  transform: translateY(-3px);
+}
+
+.card-number {
+  color: var(--red);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 25px;
+  font-weight: 800;
+  margin-bottom: 18px;
+}
+
+.card h3 { font-size: 16px; margin-bottom: 10px; }
+
+.card p {
+  font-size: 12px;
+  line-height: 1.8;
+  color: var(--muted);
+}
+
+.leaderboard-section { background: #0d0d10; }
+
+.table-wrap {
+  border: 1px solid var(--border);
+  overflow-x: auto;
+  border-radius: 4px;
+  background: var(--panel);
+}
+
+table { width: 100%; border-collapse: collapse; min-width: 520px; }
+
+th {
+  background: #17171b;
+  color: var(--muted);
+  font-size: 10px;
+  text-align: left;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 18px 20px;
+}
+
+td {
+  padding: 20px;
+  font-size: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.empty {
+  text-align: center;
+  color: var(--muted);
+  padding: 42px 20px;
+}
+
+.updates {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--border);
+}
+
+.update {
+  display: flex;
+  gap: 25px;
+  padding: 24px 5px;
+  border-bottom: 1px solid var(--border);
+}
+
+.update-date {
+  color: var(--red);
+  font-size: 10px;
+  font-weight: 800;
+  min-width: 85px;
+}
+
+.update h3 { font-size: 14px; margin-bottom: 7px; }
+
+.update p { font-size: 12px; color: var(--muted); }
+
+.discord {
+  text-align: center;
+  background: linear-gradient(120deg, #190c0e, #101013);
+  border-top: 1px solid #37171c;
+  border-bottom: 1px solid #37171c;
+}
+
+.discord p {
+  color: var(--muted);
+  font-size: 13px;
+  margin: 15px 0 25px;
+}
+
+footer {
+  padding: 30px 10%;
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  flex-wrap: wrap;
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: .5px;
+}
+
+footer strong { color: white; }
+
+@media(max-width: 750px) {
+  nav { padding: 0 5%; height: 68px; }
+  .nav-links { display: none; }
+  .hero { padding: 75px 7%; min-height: 510px; }
+  section { padding: 65px 7%; }
+  .cards { grid-template-columns: 1fr; }
+  .section-head { align-items: start; flex-direction: column; }
+  h2 { font-size: 36px; }
+  footer { padding: 25px 7%; }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <a href="#" class="brand">PHANTOM<span>.</span></a>
+
+  <div class="nav-links">
+    <a href="#home">Home</a>
+    <a href="#events">Tournaments</a>
+    <a href="#leaderboard">Leaderboard</a>
+    <a href="#updates">Updates</a>
+  </div>
+
+  <a class="join" href="https://discord.gg/hADPeQz9n" target="_blank">JOIN DISCORD ↗</a>
+</nav>
+
+<header class="hero" id="home">
+  <div class="hero-content">
+    <div class="eyebrow">BUILDNOW GG • COMPETITIVE</div>
+    <h1>BUILT TO<br>COMPETE<span>.</span></h1>
+    <p>
+      Welcome to Phantom Competitive.
+      Your destination for competitive BuildNow GG,
+      tournaments, player rankings and community events.
+    </p>
+    <div class="hero-buttons">
+      <a href="#events" class="button primary">EXPLORE EVENTS ↗</a>
+      <a href="#leaderboard" class="button">VIEW RANKINGS</a>
+    </div>
+  </div>
+</header>
+
+<section id="events">
+  <div class="section-head">
+    <div>
+      <div class="section-label">WHAT'S HAPPENING</div>
+      <h2>Tournaments & Events</h2>
+      <p class="section-description">Upcoming competitive action at Phantom.</p>
+    </div>
+  </div>
+
+  <div class="cards">
+    <div class="card">
+      <div class="card-number">01</div>
+      <h3>Upcoming Tournaments</h3>
+      <p>New tournament announcements will appear here.</p>
+    </div>
+    <div class="card">
+      <div class="card-number">02</div>
+      <h3>Community Events</h3>
+      <p>Community events and special competitions.</p>
+    </div>
+    <div class="card">
+      <div class="card-number">03</div>
+      <h3>Results</h3>
+      <p>Check back for official tournament results.</p>
+    </div>
+  </div>
+</section>
+
+<section class="leaderboard-section" id="leaderboard">
+  <div class="section-head">
+    <div>
+      <div class="section-label">THE COMPETITION</div>
+      <h2>Player Rankings</h2>
+      <p class="section-description">Official Phantom Competitive standings.</p>
+    </div>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Player</th>
+          <th>PR</th>
+          <th>Wins</th>
+          <th>Earnings</th>
+          <th>Tournaments</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td colspan="6" class="empty">
+            No official standings published yet.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="updates">
+  <div class="section-head">
+    <div>
+      <div class="section-label">LATEST NEWS</div>
+      <h2>Server Updates</h2>
+      <p class="section-description">News and announcements from Phantom.</p>
+    </div>
+  </div>
+
+  <div class="updates">
+    <div class="update">
+      <div class="update-date">NEWS</div>
+      <div>
+        <h3>Website Launch</h3>
+        <p>The official Phantom Competitive website is being developed.</p>
+      </div>
+    </div>
+    <div class="update">
+      <div class="update-date">UPDATES</div>
+      <div>
+        <h3>More Updates Coming</h3>
+        <p>Stay connected for future announcements.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="discord">
+  <div class="section-label">JOIN THE COMMUNITY</div>
+  <h2>READY TO COMPETE?</h2>
+  <p>Join Phantom Competitive and become part of the community.</p>
+  <a class="button primary" href="https://discord.gg/hADPeQz9n" target="_blank">
+    JOIN PHANTOM DISCORD ↗
+  </a>
+</section>
+
+<footer>
+  <div><strong>PHANTOM COMPETITIVE</strong> © 2026</div>
+  <div>BUILTNOW GG • COMPETE WITH PURPOSE</div>
+</footer>
+
+</body>
+</html>
